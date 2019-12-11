@@ -1,8 +1,6 @@
 #!/bin/bash
 
-echo $pwd; ls .
-
-source ./setenv.sh
+source ./setup/setenv.sh
 
 echo This script deploys all sample API proxies under ./sample-proxies to your organization on the Apigee API Platform.
 
@@ -40,23 +38,23 @@ curl -X POST -H "Content-type:text/xml" -d @../sample-proxies/outbound-oauth/oau
 
 curl -X POST -H "Content-type:text/xml" -d @../sample-proxies/pagination/paginationCache.xml $url/v1/o/$org/environments/$env/caches -u $username:$password
 
-cd ../doc-samples/
+cd ./doc-samples/
 
 for proxydir in *; do
     if [ -d "${proxydir}" ]; then
-        ../tools/deploy.py -n $proxydir -u $username:$password -o $org -e $env -p / -d $proxydir -h $url
+        ./tools/deploy.py -n $proxydir -u $username:$password -o $org -e $env -p / -d $proxydir -h $url
     fi
 done
 
-cd ../sample-proxies/
+cd ./sample-proxies/
 
 for proxydir in *; do
     if [ -d "${proxydir}" ]; then
-        ../tools/deploy.py -n $proxydir -u $username:$password -o $org -e $env -p / -d $proxydir -h $url
+        ./tools/deploy.py -n $proxydir -u $username:$password -o $org -e $env -p / -d $proxydir -h $url
     fi
 done
 
-cd ../setup/
+cd ./setup/
 
 echo "Deployment complete. Sample API proxies are deployed to the $env environment in the organization $org"
 
@@ -64,4 +62,4 @@ echo "Login to enterprise.apigee.com to view and interact with the sample API pr
 
 echo "To invoke the samples, run invoke.sh found in each sample's directory in this distribution."
 
-./provisioning_for_oauth.sh apikey,oauth-authcode,oauth-client-credentials,oauth-verify-accesstoken,oauth-login-app
+./setup/provisioning_for_oauth.sh apikey,oauth-authcode,oauth-client-credentials,oauth-verify-accesstoken,oauth-login-app
