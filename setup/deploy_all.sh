@@ -42,7 +42,7 @@ cd ./doc-samples/
 
 for proxydir in *; do
     if [ -d "${proxydir}" ]; then
-        ./tools/deploy.py -n $proxydir -u $username:$password -o $org -e $env -p / -d $proxydir -h $url
+        ../tools/deploy.py -n $proxydir -u $username:$password -o $org -e $env -p / -d $proxydir -h $url
     fi
 done
 
@@ -50,7 +50,7 @@ cd ./sample-proxies/
 
 for proxydir in *; do
     if [ -d "${proxydir}" ]; then
-        ./tools/deploy.py -n $proxydir -u $username:$password -o $org -e $env -p / -d $proxydir -h $url
+        ../tools/deploy.py -n $proxydir -u $username:$password -o $org -e $env -p / -d $proxydir -h $url
     fi
 done
 
