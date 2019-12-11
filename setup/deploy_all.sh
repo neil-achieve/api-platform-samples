@@ -10,7 +10,7 @@ echo Using $username in $org.
 
 echo "Enter your password for the Apigee Enterprise organization $org, followed by [ENTER]:"
 
-read -s password
+password=$1
 
 echo Verifying credentials...
 
