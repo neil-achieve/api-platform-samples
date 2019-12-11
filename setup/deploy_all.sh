@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo $pwd; ls .
+
 source ./setenv.sh
 
 echo This script deploys all sample API proxies under ./sample-proxies to your organization on the Apigee API Platform.
